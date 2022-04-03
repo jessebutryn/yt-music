@@ -20,15 +20,15 @@ max_bg_procs () {
 	done
 }
 main () {
-    dos2unix "$url_file" &>/dev/null
-        file=$(youtube-dl -o "${output_dir}/%(title)s" --get-filename "$url")
-        file="${file}.mp3"
-        youtube-dl "${dl_opts[@]}" -o "${output_dir}/%(title)s.%(ext)s" "$url" >/dev/null
-        if [[ ! -f "$file" ]]; then
-            printf '%s\n' "$fail_file"
-        fi
+    file=$(youtube-dl -o "${output_dir}/%(title)s" --get-filename "$url")
+    file="${file}.mp3"
+    youtube-dl "${dl_opts[@]}" -o "${output_dir}/%(title)s.%(ext)s" "$url" >/dev/null
+    if [[ ! -f "$file" ]]; then
+        printf '%s\n' "$fail_file"
+    fi
 }
 #######################################
+dos2unix "$url_file" &>/dev/null
 mapfile -t urls < "$url_file"
 for url in "${urls[@]}"; do
     max_bg_procs 5
