@@ -24,7 +24,7 @@ main () {
     file="${file}.mp3"
     youtube-dl "${dl_opts[@]}" -o "${output_dir}/%(title)s.%(ext)s" "$url" >/dev/null
     if [[ ! -f "$file" ]]; then
-        printf '%s\n' "$fail_file"
+        printf '%s\n' $file >> "$fail_file"
     fi
 }
 #######################################
