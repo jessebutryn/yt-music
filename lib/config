@@ -1,0 +1,7 @@
+url_file=$YT_URL_FILE
+fail_file=$YT_FAIL_FILE
+output_dir=$YT_OUTPUT_DIR
+dl_opts=(
+    -x
+    --audio-format mp3
+)
